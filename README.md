@@ -1,57 +1,54 @@
-# Gemini CLI Extension - Cloud SQL for SQL Server
+# Gemini CLI Extension - Cloud SQL for SQL Server Observability
 
-This Gemini CLI extension provides a set of tools to interact with [Cloud SQL for SQL Server](https://cloud.google.com/sql/docs/sqlserver) instances. It allows you to manage your databases, execute queries, and explore schemas directly from the [Gemini CLI](https://google-gemini.github.io/gemini-cli/), using natural language prompts.
+This Gemini CLI extension provides a set of tools to interact with [Cloud SQL for SQL Server](https://cloud.google.com/sql/docs/sqlserver)  monitoring metrics. It allows you to fetch a wide range of database metrics, enabling comprehensive monitoring of database performance and health directly from the [Gemini CLI](https://google-gemini.github.io/gemini-cli/), using natural language prompts.
 
-## Features
+Learn more about [Gemini CLI Extensions](https://github.com/google-gemini/gemini-cli/blob/main/docs/extension.md)
 
-*   **Integrated with Gemini CLI:** As a Google-developed extension, it integrates seamlessly into the Gemini CLI environment, making security an accessible part of your workflow.
-*   **Connect to Cloud SQL for SQL Server:** Securely connect to your Cloud SQL for SQL Server instances.
-*   **Explore Database Schema:** List databases, tables, views, and schemas.
-*   **Query your Database:** Execute SQL queries against your database.
+## Why Use the Cloud SQL for SQL Server Observability Extension?
 
-## Supported Tools
-
-* list-tables: Use this tool to list tables and descriptions.
-* execute-sql: Use this tool to execute any SQL statement.
+* **Natural Language Management:** Stop wrestling with complex monitoring queries. Explore monitoring data by describing what you want in plain English.
+* **Seamless Workflow:** As a Google-developed extension, it integrates seamlessly into the Gemini CLI environment. No need to constantly switch contexts for common tasks.
 
 ## Prerequisites
 
 Before you begin, ensure you have the following:
 
 *   [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed.
-*   A Google Cloud project with the **Cloud SQL Admin API** enabled.
+*   A Google Cloud project with the **Cloud Monitoring API** enabled.
 *   IAM Permissions
+  * Monitoring Viewer (`roles/monitoring.viewer`)
 
 ## Installation
 
 To install the extension, use the command:
 
 ```bash
-gemini extensions install github.com/gemini-cli-extensions/cloud-sql-sqlserver.git
+gemini extensions install github.com/gemini-cli-extensions/cloud-sql-sqlserver-observability
 ```
 
 ## Configuration
 
-*   `CLOUD_SQL_MSSQL_PROJECT`: The GCP project ID.
-*   `CLOUD_SQL_MSSQL_REGION`: The region of your Cloud SQL instance.
-*   `CLOUD_SQL_MSSQL_INSTANCE`: The ID of your Cloud SQL instance.
-*   `CLOUD_SQL_MSSQL_DATABASE`: The name of the database to connect to.
-*   `CLOUD_SQL_MSSQL_IP_ADDRESS`: The IP address of the Cloud SQL instance.
-*   `CLOUD_SQL_MSSQL_USER`: The database username.
-*   `CLOUD_SQL_MSSQL_PASSWORD`: The password for the database user.
+No configuration is required.
 
+## Usage Examples
 
-## Usage
+Interact with Cloud Monitoring metrics using natural language right from your IDE:
 
-* Provision Infrastructure
-* Explore Schemas and Data
-* Generate code
+* "What is the memory usage for my SQL Server database?"
+* "What is the overall system performance for my instance?"
+* "What queries have been run for this instance over the last 3 hours?"
+* "Provide the execution time for the query X"
 
+## Supported Tools
 
-## Security
+* `get_system_metrics`: Fetches system level cloud monitoring data (timeseries metrics) for a SQL Server instance using a PromQL query.
+* `get_query_metrics`: Fetches query level cloud monitoring data (timeseries metrics) for queries running in SQL Server instance using a PromQL query.
 
-This extension executes commands against your Cloud SQL for SQL Server database. Always review the generated SQL queries before execution, especially for write operations.
+## Additional Extensions
 
-## Disclaimer
+Find additional extensions to support your entire software development lifecycle at [github.com/gemini-cli-extensions](https://github.com/gemini-cli-extensions).
 
-This is not an officially supported Google product. This extension is under active development, and breaking changes may be introduced.
+## Troubleshooting
+
+* "cannot execute binary file": Ensure the correct binary for your OS/Architecture has been downloaded. See [Installing the server](https://googleapis.github.io/genai-toolbox/getting-started/introduction/#installing-the-server) for more information.
+
