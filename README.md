@@ -16,7 +16,7 @@ Before you begin, ensure you have the following:
 *   [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed.
 *   A Google Cloud project with the **Cloud Monitoring API** enabled.
 *   IAM Permissions
-  * Monitoring Viewer (`roles/monitoring.viewer`)
+    * Monitoring Viewer (`roles/monitoring.viewer`)
 
 ## Installation
 
